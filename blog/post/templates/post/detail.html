@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ object.title }}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h3 class="text-primary py-2">Quick Blog</h3>
+</div>
+<nav class="navbar navbar-toggleable-md bg-inverse">
+    <div class="container">
+        <a class="navbar-brand text-white" href="/">Home</a>
+    </div>
+</nav>
+<div class="container">
+    <div class="card">
+        <img class="card-img-top" src="{{ object.image.url }}" alt="{{ object.title }}" height="300">
+        <div class="card-block">
+            <div class="card-title">
+                <h3 class="mt-0"><a href="{% url 'post_detail' object.id %}">{{ object.title }}</a></h3>
+            </div>
+            <p>By <strong>{{ object.author }} </strong> on <strong>{{ object.category }}</strong>
+                Posted at: <strong>{{ object.created_at|timesince }} ago</strong>
+            </p>
+            <p>{{ object.body|safe }}</p>
+        </div>
+    </div>
+</div>
+<div id="footer" class="bg-inverse text-white text-center py-2">
+    Copyright @ Quick Blog {% now 'Y' %}
+</div>
+</body>
+</html>
